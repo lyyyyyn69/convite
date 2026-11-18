@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitória • 12 Anos • Sexta-Feira 13</title>
+  <!-- Fontes temáticas do Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-black: #09060e;
+      --bg-card: #140d21;
+      --bg-card-alt: #1c122e;
+      --purple-main: #7b2cbf;
+      --purple-light: #9d4edd;
+      --purple-glow: rgba(157, 78, 221, 0.45);
+      --green-neon: #39ff14;
+      --green-dark: #1f9d08;
+      --green-glow: rgba(57, 255, 20, 0.35);
+      --text-light: #f3efff;
+      --text-muted: #b8aed4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-black);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(123, 44, 191, 0.22) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(57, 255, 20, 0.12) 0%, transparent 45%);
+      color: var(--text-light);
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding-bottom: 50px;
+    }
+
+    /* Teias de Aranha nos Cantos Superiores */
+    .cobweb {
+      position: fixed;
+      top: 0;
+      width: 180px;
+      height: 180px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.35;
+    }
+    .cobweb.left { left: 0; }
+    .cobweb.right { right: 0; transform: scaleX(-1); }
+
+    /* Morcegos Flutuantes */
+    .floating-bats {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bat {
+      position: absolute;
+      width: 36px;
+      fill: var(--purple-light);
+      opacity: 0.35;
+      animation: fly 14s infinite ease-in-out;
+    }
+    .bat:nth-child(1) { top: 12%; left: 10%; animation-delay: 0s; }
+    .bat:nth-child(2) { top: 28%; right: 12%; width: 45px; animation-delay: 3s; }
+    .bat:nth-child(3) { top: 65%; left: 8%; width: 28px; animation-delay: 6s; }
+    .bat:nth-child(4) { top: 75%; right: 15%; width: 38px; animation-delay: 9s; }
+
+    @keyframes fly {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-22px) rotate(6deg); }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Container Principal */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 30px 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Cabeçalho / Hero */
+    header {
+      text-align: center;
+      padding: 35px 20px;
+      background: linear-gradient(180deg, rgba(28, 18, 46, 0.9) 0%, rgba(14, 9, 24, 0.95) 100%);
+      border: 2px solid var(--purple-main);
+      border-radius: 24px;
+      box-shadow: 0 0 30px var(--purple-glow), inset 0 0 20px rgba(57, 255, 20, 0.08);
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .badge-date {
+      display: inline-block;
+      background: rgba(57, 255, 20, 0.14);
+      border: 1px solid var(--green-neon);
+      color: var(--green-neon);
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      box-shadow: 0 0 12px var(--green-glow);
+      margin-bottom: 14px;
+    }
+
+    .hero-illustration {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 10px;
+      animation: floatSlow 3.5s infinite ease-in-out;
+    }
+
+    h1 {
+      font-family: 'Creepster', cursive;
+      font-size: clamp(2.8rem, 7vw, 4.3rem);
+      color: var(--green-neon);
+      text-shadow: 0 0 15px var(--green-glow), 3px 3px 0px var(--purple-main);
+      letter-spacing: 2px;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+
+    .subtitle span {
+      color: var(--purple-light);
+      font-weight: 700;
+    }
+
+    .intro-text {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Seções em Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(157, 78, 221, 0.45);
+      border-radius: 20px;
+      padding: 26px 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .card-title {
+      font-family: 'Creepster', cursive;
+      font-size: 1.9rem;
+      color: var(--purple-light);
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px dashed rgba(57, 255, 20, 0.3);
+      padding-bottom: 10px;
+    }
+
+    .card-title svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    /* Grid de Informações */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .info-box {
+      background: var(--bg-card-alt);
+      border-left: 4px solid var(--green-neon);
+      padding: 15px;
+      border-radius: 12px;
+    }
+
+    .info-box h3 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--green-neon);
+      margin-bottom: 6px;
+    }
+
+    .info-box p {
+      font-size: 0.98rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .btn-map {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 7px 14px;
+      background: rgba(123, 44, 191, 0.3);
+      border: 1px solid var(--purple-light);
+      color: var(--text-light);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .btn-map:hover {
+      background: var(--purple-main);
+      box-shadow: 0 0 12px var(--purple-glow);
+    }
+
+    /* Contatos dos Pais */
+    .parents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .parent-card {
+      background: var(--bg-card-alt);
+      border: 1px solid rgba(157, 78, 221, 0.3);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .parent-name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .parent-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .btn-whats {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(57, 255, 20, 0.15);
+      border: 1px solid var(--green-neon);
+      color: var(--green-neon);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .btn-whats:hover {
+      background: var(--green-neon);
+      color: #050505;
+      box-shadow: 0 0 15px var(--green-glow);
+    }
+
+    /* Formulário RSVP */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-light);
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      background: #0c0714;
+      border: 1.5px solid var(--purple-main);
+      border-radius: 12px;
+      color: var(--text-light);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.25s;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      border-color: var(--green-neon);
+      box-shadow: 0 0 12px var(--green-glow);
+    }
+
+    .companions-container {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      background: linear-gradient(90deg, var(--purple-main), #5a189a);
+      border: 2px solid var(--green-neon);
+      border-radius: 14px;
+      color: var(--green-neon);
+      font-family: 'Creepster', cursive;
+      font-size: 1.65rem;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 18px var(--purple-glow);
+    }
+
+    .btn-submit:hover {
+      background: var(--green-neon);
+      color: #09060e;
+      box-shadow: 0 0 25px var(--green-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Ticket / Código de Convite Gerado */
+    #ticket-area {
+      display: none;
+      margin-top: 24px;
+      background: linear-gradient(135deg, #1b0f30 0%, #0d0817 100%);
+      border: 2px dashed var(--green-neon);
+      border-radius: 18px;
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(57, 255, 20, 0.22);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .ticket-header {
+      font-family: 'Creepster', cursive;
+      font-size: 1.7rem;
+      color: var(--green-neon);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .ticket-code-box {
+      background: #07040c;
+      border: 1px solid var(--purple-light);
+      padding: 12px 18px;
+      border-radius: 12px;
+      margin: 14px auto;
+      display: inline-block;
+    }
+
+    .ticket-code-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .ticket-code {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--green-neon);
+      letter-spacing: 3px;
+      font-family: monospace;
+    }
+
+    .ticket-details {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .ticket-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .btn-copy, .btn-send-parents {
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+
+    .btn-copy {
+      background: var(--purple-main);
+      color: #fff;
+    }
+
+    .btn-copy:hover {
+      background: var(--purple-light);
+    }
+
+    .btn-send-parents {
+      background: var(--green-neon);
+      color: #09060e;
+    }
+
+    .btn-send-parents:hover {
+      filter: brightness(1.1);
+    }
+
+    /* Rodapé */
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 20px;
+    }
+
+    footer span {
+      color: var(--green-neon);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Teias de aranha decorativas -->
+  <svg class="cobweb left" viewBox="0 0 200 200" fill="none" stroke="#9d4edd" stroke-width="1.5">
+    <path d="M0 0 L200 0 M0 0 L180 75 M0 0 L140 140 M0 0 L75 180 M0 0 L0 200"/>
+    <path d="M40 0 Q35 25 28 38 Q18 45 0 40"/>
+    <path d="M85 0 Q75 45 60 65 Q40 80 0 85"/>
+    <path d="M135 0 Q120 70 95 100 Q65 125 0 135"/>
+    <path d="M185 0 Q165 95 130 135 Q90 170 0 185"/>
+  </svg>
+  <svg class="cobweb right" viewBox="0 0 200 200" fill="none" stroke="#9d4edd" stroke-width="1.5">
+    <path d="M0 0 L200 0 M0 0 L180 75 M0 0 L140 140 M0 0 L75 180 M0 0 L0 200"/>
+    <path d="M40 0 Q35 25 28 38 Q18 45 0 40"/>
+    <path d="M85 0 Q75 45 60 65 Q40 80 0 85"/>
+    <path d="M135 0 Q120 70 95 100 Q65 125 0 135"/>
+    <path d="M185 0 Q165 95 130 135 Q90 170 0 185"/>
+  </svg>
+
+  <!-- Morcegos flutuantes de fundo -->
+  <div class="floating-bats" aria-hidden="true">
+    <svg class="bat" viewBox="0 0 64 32"><path d="M32 14c-3-4-7-4-9 0-4-6-13-8-21-3 5 2 7 6 6 10 4-2 8-1 10 2 3-3 7-3 10 0 2-3 6-4 10-2-1-4 1-8 6-10-8-5-17-3-22 3z"/></svg>
+    <svg class="bat" viewBox="0 0 64 32"><path d="M32 14c-3-4-7-4-9 0-4-6-13-8-21-3 5 2 7 6 6 10 4-2 8-1 10 2 3-3 7-3 10 0 2-3 6-4 10-2-1-4 1-8 6-10-8-5-17-3-22 3z"/></svg>
+    <svg class="bat" viewBox="0 0 64 32"><path d="M32 14c-3-4-7-4-9 0-4-6-13-8-21-3 5 2 7 6 6 10 4-2 8-1 10 2 3-3 7-3 10 0 2-3 6-4 10-2-1-4 1-8 6-10-8-5-17-3-22 3z"/></svg>
+    <svg class="bat" viewBox="0 0 64 32"><path d="M32 14c-3-4-7-4-9 0-4-6-13-8-21-3 5 2 7 6 6 10 4-2 8-1 10 2 3-3 7-3 10 0 2-3 6-4 10-2-1-4 1-8 6-10-8-5-17-3-22 3z"/></svg>
+  </div>
+
+  <div class="container">
+    <!-- Cabeçalho -->
+    <header>
+      <div class="badge-date">🎃 Sexta-Feira 13 • Edição Especial 🎃</div>
+      
+      <!-- Ilustração SVG: Abóbora Roxa com Chapéu de Bruxa e Brilho Verde -->
+      <div class="hero-illustration">
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Lua / Aura Verde -->
+          <circle cx="60" cy="68" r="44" fill="#39ff14" fill-opacity="0.14"/>
+          <!-- Corpo da Abóbora -->
+          <ellipse cx="60" cy="76" rx="34" ry="26" fill="#7b2cbf" stroke="#39ff14" stroke-width="2"/>
+          <ellipse cx="60" cy="76" rx="21" ry="26" fill="#9d4edd" stroke="#140d21" stroke-width="1.5"/>
+          <ellipse cx="60" cy="76" rx="10" ry="26" fill="#7b2cbf"/>
+          <!-- Olhos e Boca Brilhantes -->
+          <polygon points="45,68 53,63 51,73" fill="#39ff14"/>
+          <polygon points="75,68 67,63 69,73" fill="#39ff14"/>
+          <path d="M43 84 L50 89 L55 84 L60 90 L65 84 L70 89 L77 84 L72 93 L60 95 L48 93 Z" fill="#39ff14"/>
+          <!-- Chapéu de Bruxa -->
+          <path d="M24 54 Q60 62 96 54 L76 46 L63 14 L42 46 Z" fill="#140d21" stroke="#9d4edd" stroke-width="2"/>
+          <path d="M41 48 Q60 52 79 48" stroke="#39ff14" stroke-width="3.5" stroke-linecap="round"/>
+          <rect x="56" y="44" width="8" height="8" rx="1" stroke="#39ff14" stroke-width="2" fill="#140d21"/>
+        </svg>
+      </div>
+
+      <h1>Vitória faz 12!</h1>
+      <p class="subtitle">Uma noite <span>assustadoramente divertida</span> espera por você</p>
+      <p class="intro-text">
+        Prepare sua melhor fantasia e venha celebrar os <strong>12 anos da Vitória</strong> em uma Sexta-Feira 13 cheia de mistérios, música, doces e travessuras!
+      </p>
+    </header>
+
+    <!-- Detalhes do Evento -->
+    <section class="card">
+      <h2 class="card-title">
+        <!-- Ícone Fantasma SVG -->
+        <svg viewBox="0 0 24 24" fill="#39ff14"><path d="M12 2a8 8 0 0 0-8 8v10l2.67-2L9.33 20 12 18l2.67 2 2.66-2L20 20V10a8 8 0 0 0-8-8zm-2.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+        Detalhes da Festa
+      </h2>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <h3>📅 Data e Horário</h3>
+          <p><strong>Sexta-Feira, 13 de Novembro</strong><br>A partir das <strong>19h30</strong> até 00h00</p>
+        </div>
+
+        <div class="info-box">
+          <h3>🧙‍♀️ Traje (Dress Code)</h3>
+          <p><strong>Fantasia de Halloween</strong> ou roupas nas cores Preto, Roxo ou Verde Neon!</p>
+        </div>
+
+        <div class="info-box" style="grid-column: 1 / -1;">
+          <h3>📍 Local / Endereço</h3>
+          <p>
+            <strong>Espaço Encantado Eventos</strong><br>
+            Rua das Abóboras Sombrias, nº 1313 — Bairro Jardim Noturno, São Paulo - SP
+          </p>
+          <a class="btn-map" href="https://maps.google.com/?q=Sao+Paulo" target="_blank" rel="noopener">
+            🗺️ Abrir no Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato dos Pais -->
+    <section class="card">
+      <h2 class="card-title">
+        <!-- Ícone Caldeirão / Poção SVG -->
+        <svg viewBox="0 0 24 24" fill="#39ff14"><path d="M9 3h6v2h-1v2.1c2.88.86 5 3.54 5 6.9 0 3.87-3.13 7-7 7s-7-3.13-7-7c0-3.36 2.12-6.04 5-6.9V5H9V3zm3 6a5 5 0 0 0-5 5c0 2.76 2.24 5 5 5s5-2.24 5-5a5 5 0 0 0-5-5z"/></svg>
+        Dúvidas? Fale com os Pais
+      </h2>
+
+      <div class="parents-grid">
+        <div class="parent-card">
+          <div>
+            <div class="parent-name">Mariana (Mãe da Vitória)</div>
+            <div class="parent-role">WhatsApp / Ligações: (11) 99999-1313</div>
+          </div>
+          <a class="btn-whats" href="https://wa.me/5511999991313?text=Ol%C3%A1%20Mariana!%20Sobre%20o%20anivers%C3%A1rio%20de%2012%20anos%20da%20Vit%C3%B3ria..." target="_blank" rel="noopener">
+            💬 Chamar no WhatsApp
+          </a>
+        </div>
+
+        <div class="parent-card">
+          <div>
+            <div class="parent-name">Carlos (Pai da Vitória)</div>
+            <div class="parent-role">WhatsApp / Ligações: (11) 98888-1313</div>
+          </div>
+          <a class="btn-whats" href="https://wa.me/5511988881313?text=Ol%C3%A1%20Carlos!%20Sobre%20o%20anivers%C3%A1rio%20de%2012%20anos%20da%20Vit%C3%B3ria..." target="_blank" rel="noopener">
+            💬 Chamar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Confirmação de Presença (RSVP) -->
+    <section class="card" id="rsvp-section">
+      <h2 class="card-title">
+        <!-- Ícone Caveira / Convite SVG -->
+        <svg viewBox="0 0 24 24" fill="#39ff14"><path d="M12 2C7.58 2 4 5.58 4 10c0 2.85 1.49 5.35 3.74 6.76L8 21h8l.26-4.24C18.51 15.35 20 12.85 20 10c0-4.42-3.58-8-8-8zm-3 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+        Confirmar Presença & Gerar Código
+      </h2>
+
+      <form id="rsvp-form">
+        <div class="form-group">
+          <label for="guest-name">Seu Nome Completo *</label>
+          <input type="text" id="guest-name" placeholder="Ex: Lucas Silva" required />
+        </div>
+
+        <div class="form-group">
+          <label for="companions-count">Quantos acompanhantes você vai levar? (Máximo 5)</label>
+          <select id="companions-count">
+            <option value="0">0 — Vou sozinho(a)</option>
+            <option value="1">1 acompanhante</option>
+            <option value="2">2 acompanhantes</option>
+            <option value="3">3 acompanhantes</option>
+            <option value="4">4 acompanhantes</option>
+            <option value="5">5 acompanhantes</option>
+          </select>
+        </div>
+
+        <!-- Campos dinâmicos para os nomes dos acompanhantes -->
+        <div id="companions-names-wrapper" class="form-group" style="display: none;">
+          <label>Nome dos Acompanhantes:</label>
+          <div id="companions-inputs" class="companions-container"></div>
+        </div>
+
+        <button type="submit" class="btn-submit">🔮 Gerar Meu Passe VIP</button>
+      </form>
+
+      <!-- Área do Passe / Código Gerado -->
+      <div id="ticket-area">
+        <div class="ticket-header">🦇 Presença Confirmada! 🦇</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Apresente este código na entrada da festa da Vitória:
+        </p>
+
+        <div class="ticket-code-box">
+          <div class="ticket-code-label">Código do Convite</div>
+          <div class="ticket-code" id="generated-code">VIT12-XXXX</div>
+        </div>
+
+        <div class="ticket-details" id="ticket-summary"></div>
+
+        <div class="ticket-actions">
+          <button type="button" class="btn-copy" id="copy-btn">📋 Copiar Código</button>
+          <a href="#" target="_blank" rel="noopener" class="btn-send-parents" id="whatsapp-confirm-btn">
+            📲 Enviar Confirmação aos Pais
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Feito especialmente para os <span>12 Anos da Vitória</span> • Sexta-Feira 13 🕷️
+    </footer>
+  </div>
+
+  <script>
+    const companionsSelect = document.getElementById('companions-count');
+    const companionsWrapper = document.getElementById('companions-names-wrapper');
+    const companionsInputs = document.getElementById('companions-inputs');
+    const rsvpForm = document.getElementById('rsvp-form');
+    const ticketArea = document.getElementById('ticket-area');
+    const generatedCodeEl = document.getElementById('generated-code');
+    const ticketSummaryEl = document.getElementById('ticket-summary');
+    const copyBtn = document.getElementById('copy-btn');
+    const whatsappConfirmBtn = document.getElementById('whatsapp-confirm-btn');
+
+    // Atualiza campos de nomes conforme quantidade de acompanhantes (0 a 5)
+    companionsSelect.addEventListener('change', () => {
+      const count = parseInt(companionsSelect.value, 10);
+      companionsInputs.innerHTML = '';
+
+      if (count > 0) {
+        companionsWrapper.style.display = 'block';
+        for (let i = 1; i <= count; i++) {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.required = true;
+          input.placeholder = `Nome do acompanhante ${i}`;
+          input.className = 'companion-name-input';
+          companionsInputs.appendChild(input);
+        }
+      } else {
+        companionsWrapper.style.display = 'none';
+      }
+    });
+
+    // Gera código exclusivo alfanumérico
+    function generateInviteCode(name) {
+      const cleanPrefix = name
+        .trim()
+        .toUpperCase()
+        .replace(/[^A-Z]/g, '')
+        .slice(0, 3)
+        .padEnd(3, 'X');
+      const randomNum = Math.floor(1000 + Math.random() * 9000);
+      return `VIT12-${cleanPrefix}-${randomNum}`;
+    }
+
+    // Submissão do formulário
+    rsvpForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const guestName = document.getElementById('guest-name').value.trim();
+      const count = parseInt(companionsSelect.value, 10);
+      const companionInputs = document.querySelectorAll('.companion-name-input');
+      const companionsList = Array.from(companionInputs).map(inp => inp.value.trim());
+
+      const code = generateInviteCode(guestName);
+      const totalPeople = 1 + count;
+
+      generatedCodeEl.textContent = code;
+
+      let summaryHTML = `<strong>Convidado(a) Principal:</strong> ${guestName}<br>`;
+      summaryHTML += `<strong>Total de Pessoas:</strong> ${totalPeople} (${count} acompanhante${count === 1 ? '' : 's'})`;
+      if (companionsList.length > 0) {
+        summaryHTML += `<br><strong>Acompanhantes:</strong> ${companionsList.join(', ')}`;
+      }
+      ticketSummaryEl.innerHTML = summaryHTML;
+
+      // Monta link do WhatsApp para enviar o código aos pais da Vitória
+      const parentPhone = '5511999991313'; // Número da mãe da Vitória
+      let msg = `🎃 *Confirmação de Presença - 12 Anos da Vitória* 🎃\n\n`;
+      msg += `*Nome:* ${guestName}\n`;
+      msg += `*Acompanhantes:* ${count}\n`;
+      if (companionsList.length > 0) {
+        msg += `*Nomes:* ${companionsList.join(', ')}\n`;
+      }
+      msg += `*Código do Convite:* ${code}`;
+
+      whatsappConfirmBtn.href = `https://wa.me/${parentPhone}?text=${encodeURIComponent(msg)}`;
+
+      // Exibe o passe gerado
+      ticketArea.style.display = 'block';
+      ticketArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Botão de copiar código
+    copyBtn.addEventListener('click', () => {
+      const codeText = generatedCodeEl.textContent;
+      navigator.clipboard.writeText(codeText).then(() => {
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = '✅ Código Copiado!';
+        setTimeout(() => {
+          copyBtn.textContent = originalText;
+        }, 2200);
+      });
+    });
+  </script>
+</body>
+</html>
